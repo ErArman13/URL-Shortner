@@ -1,5 +1,5 @@
 // Controller for handling URL shortening logic
-const { nanoid } = require("nanoid");
+const { nanoid } = require('nanoid');
 const URL = require("../models/urlModel");
 
 // Receives originalUrl in body, creates a short URL, and saves to DB
@@ -9,11 +9,11 @@ async function generateShortUrl(req, res) {
   await URL.create({
     originalUrl: originalUrl,
     shortUrl: shortUrl,
-    timeStamp: [], // Initialize empty timestamp array
+    timeStamp: []  // Initialize empty timestamp array
   });
   return res.json({ id: shortUrl });
 }
 
 module.exports = {
-  generateShortUrl,
+  generateShortUrl
 };
