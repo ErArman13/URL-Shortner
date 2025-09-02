@@ -2,10 +2,13 @@ const express = require("express");
 const mongoose = require("mongoose");
 const urlRoutes = require("./routes/urlRoutes");
 
+
 const app = express();
 app.use(express.json());
+// Serve static files (HTML, CSS) from public directory
+app.use(express.static('public'));
 
-// Connect to MongoDB (update the URI as needed)
+// Connect to MongoDB
 mongoose.connect("mongodb://localhost:27017/urlshortener", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -13,20 +16,9 @@ mongoose.connect("mongodb://localhost:27017/urlshortener", {
 
 app.use("/api", urlRoutes);
 
-// Redirect short URL
-const URL = require("./models/urlModel");
-app.get("/:shortUrl", async (req, res) => {
-  const { shortUrl } = req.params;
-  const url = await URL.findOne({ shortUrl });
-  if (url) {
-    // Optionally, update timestamp array
-    url.timeStamp.push({ timeStamp: Date.now() });
-    await url.save();
-    return res.redirect(url.originalUrl);
-  } else {
-    return res.status(404).json({ error: "URL not found" });
-  }
-});
+// Redirect short URL (moved to controller)
+const { redirectToOriginalUrl } = require("./controllers/redirectController");
+app.get("/:shortUrl", redirectToOriginalUrl);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
