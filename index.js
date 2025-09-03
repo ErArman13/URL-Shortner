@@ -8,7 +8,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Connect to MongoDB
-mongoose.connect("mongodb+srv://myAppAdmin:arman1234%40@cluster0.cknckme.mongodb.net/", {
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
