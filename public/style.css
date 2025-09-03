@@ -1,5 +1,4 @@
-# Footer styling and a simple animation for your name
-.footer {
+# Footer styling and a simple animation for your name .footer {
   margin-top: 32px;
   text-align: center;
   color: #888;
@@ -14,8 +13,12 @@
   animation: arman-glow 1.5s infinite alternate;
 }
 @keyframes arman-glow {
-  from { text-shadow: 0 0 2px #007bff; }
-  to { text-shadow: 0 0 12px #007bff, 0 0 4px #fff; }
+  from {
+    text-shadow: 0 0 2px #007bff;
+  }
+  to {
+    text-shadow: 0 0 12px #007bff, 0 0 4px #fff;
+  }
 }
 body {
   font-family: Arial, sans-serif;
@@ -29,7 +32,7 @@ body {
   background: #fff;
   padding: 32px 24px 24px 24px;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   text-align: center;
 }
 h1 {
