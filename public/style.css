@@ -1,3 +1,22 @@
+# Footer styling and a simple animation for your name
+.footer {
+  margin-top: 32px;
+  text-align: center;
+  color: #888;
+  font-size: 1em;
+}
+.made-by {
+  letter-spacing: 0.5px;
+}
+.arman {
+  color: #007bff;
+  font-weight: bold;
+  animation: arman-glow 1.5s infinite alternate;
+}
+@keyframes arman-glow {
+  from { text-shadow: 0 0 2px #007bff; }
+  to { text-shadow: 0 0 12px #007bff, 0 0 4px #fff; }
+}
 body {
   font-family: Arial, sans-serif;
   background: #f4f4f4;
